@@ -101,7 +101,7 @@ const RiskFormModal = ({ open, onClose, data }: IRiskFormModalProps) => {
             value={impData}
             onChange={(e) => setImpData(Number(e.target.value))}
           >
-            {probability.map((option, i) => (
+            {impact.map((option, i) => (
               <MenuItem key={i} value={option.id}>
                 {`${option.id} - ${option.name}`}
               </MenuItem>
