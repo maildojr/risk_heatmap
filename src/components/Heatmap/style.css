@@ -1,0 +1,39 @@
+#heatmap tr {
+    white-space: nowrap;
+    /* border: 4px solid; */
+}
+
+.heatmap-rc {
+    height: 84px;
+    max-height: 48px;
+}
+
+#heatmap td {
+    padding: 5px;
+    text-align: center;
+    /* width: 100px;
+  //max-width: 100px; */
+    /* border: 3px solid;
+    border-color: rgb(255, 255, 255); */
+}
+
+.heatmap-titlex {
+    font-size: small;
+    vertical-align: text-top;
+    height: 10px;
+    max-height: 10px;
+}
+
+.heatmap-titley {
+    font-size: small;
+    width: 20px;
+    max-width: 20px;
+}
+
+.rotate {
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+}

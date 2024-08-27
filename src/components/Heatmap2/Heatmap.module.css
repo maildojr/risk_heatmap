@@ -1,0 +1,77 @@
+.left {
+    width: 85%;
+    height: 60%;
+    margin-top: 5px;
+    margin-left: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.right {
+    width: 14%;
+    height: 60%;
+    margin: 20 auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.down {
+    height: 40%;
+    margin-left: 5px;
+    margin-top: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 85%;
+}
+
+.heatmap {
+    border-collapse: collapse;
+    border: 1px solid #cccccc;
+    width: 100%;
+    height: 100%;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #cccccc;
+}
+
+.rc {
+    display: block;
+    color: #000000;
+    font-size: 12px;
+}
+
+.label {
+    font-weight: bold;
+    background-color: #cccccc;
+}
+
+.labelx {
+    font-weight: bold;
+    background-color: #dddddd;
+}
+
+.risksContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.risks {
+    border-collapse: collapse;
+    width: 30%;
+    margin: 0 10px;
+}
+
+.risks th,
+.risks td {
+    border: 1px solid #cccccc;
+    padding: 8px;
+    text-align: left;
+}
