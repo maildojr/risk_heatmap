@@ -8,9 +8,15 @@ import Container from '@mui/material/Container';
 import Menu from './Menu';
 import AppBar from './AppBar';
 import Copyright from './Copyright';
+import { teal } from '@mui/material/colors';
 
 // TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  // palette: {
+  //   primary: teal,
+  //   secondary: teal,
+  // },
+});
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(false);
