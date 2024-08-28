@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { initialRisks, txtLegendHeatmap, txtProb, txtImp, txtLevelRisks } from 'data';
 import { IRisks, ILegendHeatmap, ILegends, ILevelRisks } from 'interfaces';
 
@@ -26,15 +26,42 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [impact, setImpact] = useState<ILegends[]>(txtImp);
     const [levelRisks, setLevelRisks] = useState<ILevelRisks[]>(txtLevelRisks);
 
+    useEffect(() => {
+        const risksLocal = localStorage.getItem('risks');
+        if (risksLocal) {
+            setRisks(JSON.parse(risksLocal));
+        } else {
+            localStorage.setItem('risks', JSON.stringify(initialRisks));
+        }
+        const probabilityLocal = localStorage.getItem('probability');
+        if (probabilityLocal) {
+            setProbability(JSON.parse(probabilityLocal));
+        } else {
+            localStorage.setItem('probability', JSON.stringify(txtProb));
+        }
+        const impactLocal = localStorage.getItem('impact');
+        if (impactLocal) {
+            setImpact(JSON.parse(impactLocal));
+        } else {
+            localStorage.setItem('impact', JSON.stringify(txtImp));
+        }
+    }, []);
+
     // Risks
     const addRisk = (newItem: IRisks) => {
-        setRisks(prev => [...prev, newItem]);
+        const newRisks = [...risks, newItem];
+        setRisks(newRisks);
+        localStorage.setItem('risks', JSON.stringify(newRisks));
     };
     const editRisk = (item: IRisks) => {
-        setRisks(prev => prev.map(risk => risk.id === item.id ? item : risk));
+        const newRisks = risks.map(risk => risk.id === item.id ? item : risk);
+        setRisks(newRisks);
+        localStorage.setItem('risks', JSON.stringify(newRisks));
     };
     const deleteRisk = (id: string) => {
-        setRisks(prev => prev.filter(risk => risk.id !== id));
+        const newRisks = risks.filter(risk => risk.id !== id);
+        setRisks(newRisks);
+        localStorage.setItem('risks', JSON.stringify(newRisks));
     };
 
     // Legend Heatmap
@@ -44,11 +71,15 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     // Probability
     const editProbability = (item: ILegends) => {
-        setProbability(prev => prev.map(prob => prob.id === item.id ? item : prob));
+        const newProbability = probability.map(prob => prob.id === item.id ? item : prob);
+        setProbability(newProbability);
+        localStorage.setItem('probability', JSON.stringify(newProbability));
     };
     // Impact
     const editImpact = (item: ILegends) => {
-        setImpact(prev => prev.map(imp => imp.id === item.id ? item : imp));
+        const newImpact = impact.map(imp => imp.id === item.id ? item : imp);
+        setImpact(newImpact);
+        localStorage.setItem('impact', JSON.stringify(newImpact));
     };
     
     // Level Risks

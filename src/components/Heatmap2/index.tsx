@@ -43,6 +43,7 @@ const Heatmap2 = () => {
   return (
     <div>
 	<table id="heatmap">
+        <tbody>
 		<tr>
 			<td width="134px"></td>
             {impact.map((imp, i) => (
@@ -50,17 +51,18 @@ const Heatmap2 = () => {
             ))}
 		</tr>
         {descProb.map((prob, i) => (
-            <tr>
-                <td className="labelx" key={i}>{`${prob.id}. ${prob.name}`}</td>
+            <tr key={`${prob.id}. ${prob.name}`}>
+                <td className="labelx">{`${prob.id}. ${prob.name}`}</td>
                 {impact.map((imp, i) => (
                     <td style={{ borderRadius: '5px', backgroundColor: getColor(prob.id, imp.id) }} key={`${prob.id}-${imp.id}`}>
-                        {risks.filter(risk => risk.prob === prob.id && risk.imp === imp.id).map(risk => (
-                          <ItemRC>{`R${risk.code}`}</ItemRC>  
+                        {risks.filter(risk => risk.prob === prob.id && risk.imp === imp.id).map((risk, i) => (
+                          <ItemRC key={i}>{`R${risk.code}`}</ItemRC>  
                         ))}
                     </td>    
                 ))}
             </tr>
         ))}
+        </tbody>
 	</table>
 </div>
   )

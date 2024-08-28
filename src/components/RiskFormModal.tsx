@@ -15,8 +15,8 @@ const RiskFormModal = ({ open, onClose, data }: IRiskFormModalProps) => {
   const { probability, impact, addRisk, editRisk } = useDataContext();
   const [riskIDData, setRiskIDData] = useState<number>(0);
   const [riskData, setRiskData] = useState<string>('');
-  const [probData, setProbData] = useState<number>(0);
-  const [impData, setImpData] = useState<number>(0);
+  const [probData, setProbData] = useState<number>(1);
+  const [impData, setImpData] = useState<number>(1);
   const [edit, setEdit] = useState<boolean>(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const RiskFormModal = ({ open, onClose, data }: IRiskFormModalProps) => {
     } else {
       addRisk(newRisk);
     }
-    console.log(newRisk);
+    // console.log(newRisk);
     onClose(); // Close the modal after saving
   };
 
